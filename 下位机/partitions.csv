@@ -1,0 +1,17 @@
+# 分区表（按 2MB flash 规划）
+#
+# 为什么不用 IDF 默认的 partitions_singleapp.csv：
+#   默认只给 factory app 1MB。这个工程以后要加 Wi-Fi / lwip / JPEG 解码 / RTP 收流，
+#   参考工程（esp32s31_test）就是几样都上齐之后固件到 1.0MB、只剩 3% 差点编不过。
+#   2MB flash 里原本有将近 1MB 完全没用，这里直接把 app 放到 1.5MB。
+#
+# 如果实际 flash 不是 2MB，改 sdkconfig.defaults 里的 CONFIG_ESPTOOLPY_FLASHSIZE_*。
+#
+# storage 分区（448KB）现在没用上，留着以后放字库/图片等文件：
+#   esp_vfs_spiffs_register(&(esp_vfs_spiffs_conf_t){ .partition_label = "storage", ... });
+#
+# Name,   Type, SubType, Offset,   Size,     Flags
+nvs,      data, nvs,     0x9000,   0x6000,
+phy_init, data, phy,     0xF000,   0x1000,
+factory,  app,  factory, 0x10000,  0x400000,
+storage,  data, spiffs, , 0x800000,

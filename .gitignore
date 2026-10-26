@@ -1,0 +1,30 @@
+# ============ ESP-IDF 下位机 ============
+下位机/build/
+下位机/sdkconfig.old
+下位机/sdkconfig.ci
+下位机/.vscode/
+下位机/.clangd
+下位机/managed_components/
+build/
+sdkconfig.old
+
+# ============ Qt 上位机 ============
+上位机/rtp/*.pro.user
+上位机/rtp/*.pro.user.*
+上位机/rtp/build*/
+上位机/rtp/release/
+上位机/rtp/debug/
+上位机/rtp/Makefile
+上位机/rtp/*.o
+上位机/rtp/moc_*.cpp
+上位机/rtp/ui_*.h
+上位机/rtp/qrc_*.cpp
+上位机/rtp/.qmake.stash
+
+# ============ 通用 ============
+*.log
+*.o
+__pycache__/
+*.pyc
+Thumbs.db
+.DS_Store
